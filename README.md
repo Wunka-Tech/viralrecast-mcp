@@ -2,7 +2,7 @@
 
 Every client's weekly content plan: viral posts, transcripts and competitor ads in your AI.
 
-ViralRecast gives Claude and ChatGPT eyes and ears on social media, built for social media managers and small agencies. Paste a link to a TikTok, Instagram reel or carousel, YouTube video, X, Threads, LinkedIn or Reddit post and your AI receives the full content: transcript with timestamps (automatically transcribed when the network has no captions), the images and text of every carousel slide, top comments, metrics and a Viral Score that shows how much of an outlier the post was for the author's size.
+ViralRecast gives Claude, ChatGPT, Codex and any MCP agent eyes and ears on social media, built for social media managers and small agencies. Paste a link to a TikTok, Instagram reel or carousel, YouTube video, X, Threads, LinkedIn or Reddit post and your AI receives the full content: transcript with timestamps (automatically transcribed when the network has no captions), the images and text of every carousel slide, top comments, metrics and a Viral Score that shows how much of an outlier the post was for the author's size.
 
 Ask what is trending in a client's niche this week (with a filter for small accounts up to 10K followers), which posts beat a competitor's own average, which ads a competitor is running on Meta, Google, TikTok and LinkedIn and for how many days, and what people are saying about a brand (paid plans). Your AI turns it into the weekly plan, the scripts and the captions.
 
@@ -22,6 +22,20 @@ Free plan with 150 credits. This is a hosted remote server: there is nothing to 
 
 ```bash
 claude mcp add --transport http viralrecast https://viralrecast.com/mcp
+```
+
+**Codex:**
+
+```bash
+codex mcp add viralrecast --url https://viralrecast.com/mcp
+codex mcp login viralrecast   # opens the browser: sign in with Google and click Allow
+```
+
+Without a browser (servers and CI), use your API key:
+
+```bash
+export VIRALRECAST_KEY=vr_...
+codex mcp add viralrecast --url https://viralrecast.com/mcp --bearer-token-env-var VIRALRECAST_KEY
 ```
 
 **Cursor, VS Code and other clients** (`mcp.json`):
@@ -66,6 +80,12 @@ Full reference: https://viralrecast.com/docs · Guide for agents: https://viralr
 2. What is going viral about baking this week on TikTok and Instagram, only from accounts under 10K followers?
 3. Which ads is Duolingo running on Meta and Google, and for how many days?
 4. Read these 3 posts and build next week's content plan for my pet shop client, with a hook and a script for each.
+
+**Batch task (Codex, Claude Code or Claude):** your agent can read dozens of posts in one task.
+
+> Use ViralRecast to read these posts from the [client] niche, one by one: [paste 10 to 20 links, one per line]. Group them by hook type, tell me which 3 had the highest Viral Score and why, and build next week's plan with 5 posts, each with a hook, a 30-second script and a caption.
+
+Each read costs 20 credits (2 if the post is already in memory); the 150 free credits cover 7 reads.
 
 ## Links
 
